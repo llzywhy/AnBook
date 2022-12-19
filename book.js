@@ -30,9 +30,9 @@ module.exports = {
 
     "theme-lou": {
       color: "#434242", // 主题色
-      favicon: "static/favicon.ico", // favicon图标
-      logo: "logo.png", // 顶部左侧图标
-      appleTouchIconPrecomposed152: "static/apple.png", // apple图标
+      favicon: "assets/favicon.ico", // favicon图标
+      logo: "assets/logo.png", // 顶部左侧图标
+      appleTouchIconPrecomposed152: "assets/apple.png", // apple图标
       copyrightLogo: "assets/copyright.png", // 底部水印LOGO
       forbidCopy: false, // 页面是否禁止复制
       "search-placeholder": "", // 搜索框默认文本
