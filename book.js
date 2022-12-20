@@ -41,7 +41,7 @@ module.exports = {
       "book-anchor-title": "目录", // 本章目录标题
       "hide-elements": [".summary .gitbook-link", ".summary .divider"], // 需要隐藏的标签
       copyright: {
-        author: "ALLDIE", // 底部版权展示的作者名
+        author: "llzywhy", // 底部版权展示的作者名
       },
     },
   },
