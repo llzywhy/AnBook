@@ -14,8 +14,8 @@ https://developer.android.com/about
 
 ## Android 系统框架
 
-player  
-Exoplayer​  
+## Player  
+ExoPlayer​  
 NuPlayer​  
 MediaPlayer  
 VLC
@@ -45,7 +45,8 @@ Opus
 ## 音视频传输协议
 
 WebRTC  
-RTP/RTCP  
+RTP  
+RTCP  
 HLS  
 HTTP  
 TCPIP  
@@ -64,10 +65,10 @@ git
 gerrit  
 Jinkens  
 opengrok  
-RDK / Yocto  
+RDK  
+Yocto  
 buildroot  
 systrace  
 ​​dumpsys  
 Ninja  
-add2line  
 ​​bugreport
