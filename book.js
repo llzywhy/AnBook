@@ -8,6 +8,7 @@ module.exports = {
 
   // 插件列表
   plugins: [
+    "splitter",
     "-sharing",
     "search-pro",
     "code",
