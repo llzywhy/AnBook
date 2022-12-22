@@ -33,7 +33,8 @@ jobs:
       - run: npm run build
       - run: ls ${{ github.workspace }}
       - run: ls ${{ github.workspace }}/_book
-      - run: git checkout site
+      - run: git branch -avv; git remote -v
+      - run: git checkout origin/site
       - run: ls ${{ github.workspace }}/_book
       - run: ./update_site.sh
       - run: ls ${{ github.workspace }}
