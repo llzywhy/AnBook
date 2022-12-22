@@ -34,13 +34,11 @@ jobs:
       - run: ls ${{ github.workspace }}
       - run: ls ${{ github.workspace }}/_book
       
-      - uses: actions/checkout@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ref: site
-      - run: git branch -avv; git remote -v
-      - run: ls ${{ github.workspace }}/_book
-      - run: ./update_site.sh
-      - run: ls ${{ github.workspace }}
-      - run: git diff
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: site
+          publish_dir: _book
 
       - run: echo "This job's status is ${{ job.status }}."
