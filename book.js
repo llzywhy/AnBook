@@ -3,7 +3,7 @@ module.exports = {
   title: "",
   description: "Android Book",
   isbn: "",
-  author: "ALLDIE",
+  author: "llzywhy",
   lang: "zh-cn",
 
   // 插件列表
