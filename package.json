@@ -9,7 +9,8 @@
   "scripts": {
     "init": "gitbook init",
     "serve": "gitbook serve",
-    "build": "gitbook build"
+    "build": "gitbook build",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
     "gitbook-plugin-search-pro": "^2.0.2",
     "gitbook-plugin-splitter": "0.0.8",
     "gitbook-plugin-theme-lou": "^1.0.3"
+  },
+  "devDependencies": {
+    "patch-package": "^6.5.0"
   }
 }
