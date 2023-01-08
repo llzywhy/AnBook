@@ -110,3 +110,17 @@ $ git push origin main
 ```
 
 github merge 后，会自动触发 workflow, 自动更新文档
+
+### 创建插件 patch
+
+有时候需要修改插件代码来满足我们的需求，比如修改 gitbook 主题  
+而修改插件代码之后则需要生成一个 patch 来把修改保存下来
+
+创建 patch 的命令：
+
+```
+$ cd AnBook  # 进入到仓库根目录中
+$ npx patch-package gitbook-plugin-theme-lou  # gitbook-plugin-theme-lou 是插件名，需要自行修改
+```
+
+生成的 patch 文件存放在仓库根目录的 patches/ 目录中

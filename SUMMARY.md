@@ -4,6 +4,7 @@
 * Android
     * [Android 概述](doc/andriod/Andriod概述.md)
     * [Android 系统框架](doc/andriod/Android系统框架.md)
+    * [Binder](doc/andriod/Binder.md)
 * Player
     * [Exoplayer](doc/player/ExoPlayer.md)
     * [Nuplayer](doc/player/NuPlayer.md)
