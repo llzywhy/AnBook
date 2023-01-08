@@ -179,6 +179,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.3" data-path="doc/andriod/Binder.html">
+            
+                <a href="doc/andriod/Binder.html">
+            
+                    
+                    Binder
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -933,6 +946,12 @@ $ npm run build
 <pre><code>$ cd AnBook  # &#x8FDB;&#x5165;&#x5230;&#x4ED3;&#x5E93;&#x6839;&#x76EE;&#x5F55;&#x4E2D;
 $ git push origin main
 </code></pre><p>github merge &#x540E;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x89E6;&#x53D1; workflow, &#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x6587;&#x6863;</p>
+<h3 id="&#x521B;&#x5EFA;&#x63D2;&#x4EF6;-patch">&#x521B;&#x5EFA;&#x63D2;&#x4EF6; patch</h3>
+<p>&#x6709;&#x65F6;&#x5019;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x63D2;&#x4EF6;&#x4EE3;&#x7801;&#x6765;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x6BD4;&#x5982;&#x4FEE;&#x6539; gitbook &#x4E3B;&#x9898;<br>&#x800C;&#x4FEE;&#x6539;&#x63D2;&#x4EF6;&#x4EE3;&#x7801;&#x4E4B;&#x540E;&#x5219;&#x9700;&#x8981;&#x751F;&#x6210;&#x4E00;&#x4E2A; patch &#x6765;&#x628A;&#x4FEE;&#x6539;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;</p>
+<p>&#x521B;&#x5EFA; patch &#x7684;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>$ cd AnBook  # &#x8FDB;&#x5165;&#x5230;&#x4ED3;&#x5E93;&#x6839;&#x76EE;&#x5F55;&#x4E2D;
+$ npx patch-package gitbook-plugin-theme-lou  # gitbook-plugin-theme-lou &#x662F;&#x63D2;&#x4EF6;&#x540D;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x884C;&#x4FEE;&#x6539;
+</code></pre><p>&#x751F;&#x6210;&#x7684; patch &#x6587;&#x4EF6;&#x5B58;&#x653E;&#x5728;&#x4ED3;&#x5E93;&#x6839;&#x76EE;&#x5F55;&#x7684; patches/ &#x76EE;&#x5F55;&#x4E2D;</p>
  
           </section>
           
@@ -1009,7 +1028,7 @@ $ git push origin main
 
     var gitbook = gitbook || [];
     gitbook.push(function () {
-      gitbook.page.hasChanged({"page":{"title":"简介","level":"1.1","depth":1,"next":{"title":"Android","level":"1.2","depth":1,"ref":"","articles":[{"title":"Android 概述","level":"1.2.1","depth":2,"path":"doc/andriod/Andriod概述.md","ref":"doc/andriod/Andriod概述.md","articles":[]},{"title":"Android 系统框架","level":"1.2.2","depth":2,"path":"doc/andriod/Android系统框架.md","ref":"doc/andriod/Android系统框架.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["splitter","-sharing","search-pro","code","expandable-chapters","back-to-top-button","flexible-alerts","theme-lou"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"theme-lou":{"hide-elements":[".summary .gitbook-link",".summary .divider"],"color":"#434242","book-anchor-title":"目录","copyright":{"author":"llzywhy"},"forbidCopy":false,"logo":"assets/logo.png","book-summary-title":"文章列表","search-placeholder":"","copyrightLogo":"assets/copyright.png","favicon":"assets/favicon.ico","appleTouchIconPrecomposed152":"assets/apple.png"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"flexible-alerts":{"style":"flat","note":{"label":"Note","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tip","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warning","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Attention","icon":"fa fa-ban","className":"danger"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"llzywhy","lang":"zh-cn","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{"themeLou":{"nav":[],"footer":{"copyright":true}}},"title":"","gitbook":"*","description":"Android Book"},"file":{"path":"README.md","mtime":"2023-01-08T04:11:07.615Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-08T04:12:11.583Z"},"basePath":".","book":{"language":""}});
+      gitbook.page.hasChanged({"page":{"title":"简介","level":"1.1","depth":1,"next":{"title":"Android","level":"1.2","depth":1,"ref":"","articles":[{"title":"Android 概述","level":"1.2.1","depth":2,"path":"doc/andriod/Andriod概述.md","ref":"doc/andriod/Andriod概述.md","articles":[]},{"title":"Android 系统框架","level":"1.2.2","depth":2,"path":"doc/andriod/Android系统框架.md","ref":"doc/andriod/Android系统框架.md","articles":[]},{"title":"Binder","level":"1.2.3","depth":2,"path":"doc/andriod/Binder.md","ref":"doc/andriod/Binder.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["splitter","-sharing","search-pro","code","expandable-chapters","back-to-top-button","flexible-alerts","theme-lou"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"theme-lou":{"hide-elements":[".summary .gitbook-link",".summary .divider"],"color":"#434242","book-anchor-title":"目录","copyright":{"author":"llzywhy"},"forbidCopy":false,"logo":"assets/logo.png","book-summary-title":"文章列表","search-placeholder":"","copyrightLogo":"assets/copyright.png","favicon":"assets/favicon.ico","appleTouchIconPrecomposed152":"assets/apple.png"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"flexible-alerts":{"style":"flat","note":{"label":"Note","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tip","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warning","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Attention","icon":"fa fa-ban","className":"danger"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"llzywhy","lang":"zh-cn","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{"themeLou":{"nav":[],"footer":{"copyright":true}}},"title":"","gitbook":"*","description":"Android Book"},"file":{"path":"README.md","mtime":"2023-01-08T14:40:26.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-08T14:41:06.987Z"},"basePath":".","book":{"language":""}});
     });
   </script>
 </div>

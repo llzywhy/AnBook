@@ -1,7 +1,25 @@
 diff --git a/node_modules/gitbook-plugin-theme-lou/_assets/lou.css b/node_modules/gitbook-plugin-theme-lou/_assets/lou.css
-index 1856bcb..685a7c3 100644
+index 1856bcb..acdf412 100644
 --- a/node_modules/gitbook-plugin-theme-lou/_assets/lou.css
 +++ b/node_modules/gitbook-plugin-theme-lou/_assets/lou.css
+@@ -115,7 +115,7 @@ body {
+ 
+ .page-inner {
+   max-width: none;
+-  padding: 20px 240px 40px 40px;
++  padding: 20px 310px 40px 40px;
+ }
+ 
+ .header-inner #book-search-input {
+@@ -230,7 +230,7 @@ body {
+ 
+ /* Book  anchor*/
+ .book-anchor {
+-  width: 180px;
++  width: 250px;
+   position: absolute;
+   top: 130px;
+   right: 30px;
 @@ -245,7 +245,7 @@ body {
    cursor: pointer;
  }
