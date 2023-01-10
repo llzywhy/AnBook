@@ -16,6 +16,7 @@ module.exports = {
     "back-to-top-button",
     "flexible-alerts",
     "theme-lou",
+    "lightbox"
     // 'github'
   ],
 
