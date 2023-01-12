@@ -1,18 +1,29 @@
 
-## AnBook文档访问链接
-[AnBook](https://llzywhy.github.io/AnBook/)
+## AnBook 文档访问链接
+
+<https://llzywhy.github.io/AnBook/>
 
 ## 目的
+
 建立 Android 音视频知识库
 
 ## 定位
+
 **Android 音视频，多人协作**​
 
-## 目标人群
+## 目标人群​
 
 ## 多人协作
 
+1. 集多人智慧于一体
+2. 三个臭皮匠顶一个诸葛亮
+3. 健壮性强
+4. 发展
+5. 维护
+6. 利于个人创作，发挥个人的特长
+
 ## 撰写
+
 **所有文档均使用 Markdown 撰写**
 
 ## 原则
@@ -24,8 +35,13 @@
 5. 能用一句话表达的，绝不用两句话
 6. 牵扯的东西越少越好，越独立越好
 7. 二八原则。用 20% 的知识撬动剩下的 80% 的知识
-8. 一个东西往往会有多个视图，多个角度
-9. 一个东西往往会有历史，且不完美
+
+## 思考
+
+1. 一个东西往往会有多个视图，多个角度
+2. 一个东西往往会有历史，且不完美
+3. 一个东西一般可分内和外两个部分，由外到内的学习过程比较符合正常思维过程
+4. 文档需要不断维护
 
 ## 红线
 
@@ -63,24 +79,24 @@ GitBook version: 3.2.3
 ### 仓库下载
 
 ```
-$ git clone https://github.com/llzywhy/AnBook.git
-$ cd AnBook  # 进入到仓库根目录中
-$ npm install  # 安装全部依赖
+git clone https://github.com/llzywhy/AnBook.git
+cd AnBook  # 进入到仓库根目录中
+npm install  # 安装全部依赖
 ```
 
 ### 本地调试
 
 ```
-$ cd AnBook  # 进入到仓库根目录中
-$ npm run serve
+cd AnBook  # 进入到仓库根目录中
+npm run serve
 ```
 一切 OK 即可通过如下链接访问本地文档：http://localhost:4000/
 
 ### 本地编译
 
 ```
-$ cd AnBook  # 进入到仓库根目录中
-$ npm run build
+cd AnBook  # 进入到仓库根目录中
+npm run build
 ```
 根目录下的 _book/ 目录即是生成的静态网站文件
 
@@ -95,7 +111,7 @@ $ npm run build
 然后执行如下命令，即可在相应的位置生成文件
 
 ```
-$ npm run init
+npm run init
 ```
 
 ### push 修改
@@ -105,22 +121,38 @@ $ npm run init
 push 到 main 的命令：
 
 ```
-$ cd AnBook  # 进入到仓库根目录中
-$ git push origin main
+cd AnBook  # 进入到仓库根目录中
+git push origin main
 ```
 
 github merge 后，会自动触发 workflow, 自动更新文档
 
+### 插件安装和卸载
+
+安装:
+
+```
+cd AnBook  # 进入到仓库根目录中
+npm install gitbook-plugin-theme-lou  # gitbook-plugin-theme-lou 是插件名，需要自行修改
+```
+
+卸载：
+
+```
+cd AnBook  # 进入到仓库根目录中
+npm uninstall gitbook-plugin-theme-lou  # gitbook-plugin-theme-lou 是插件名，需要自行修改
+```
+
 ### 创建插件 patch
 
 有时候需要修改插件代码来满足我们的需求，比如修改 gitbook 主题  
-而修改插件代码之后则需要生成一个 patch 来把修改保存下来
+修改插件代码之后,需要生成一个 patch 来把修改保存下来
 
 创建 patch 的命令：
 
 ```
-$ cd AnBook  # 进入到仓库根目录中
-$ npx patch-package gitbook-plugin-theme-lou  # gitbook-plugin-theme-lou 是插件名，需要自行修改
+cd AnBook  # 进入到仓库根目录中
+npx patch-package gitbook-plugin-theme-lou  # gitbook-plugin-theme-lou 是插件名，需要自行修改
 ```
 
 生成的 patch 文件存放在仓库根目录的 patches/ 目录中
