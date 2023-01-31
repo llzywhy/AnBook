@@ -2,8 +2,8 @@
 
 * [简介](README.md)
 * Android
-    * [Android 概述](doc/andriod/Andriod概述.md)
-    * [Android 系统架构](doc/andriod/Android系统架构.md)
+    * [Android 概述](doc/andriod/android_overview.md)
+    * [Android 系统架构](doc/andriod/android_system_architecture.md)
     * [Binder](doc/andriod/Binder.md)
 * Player
     * [Exoplayer](doc/player/ExoPlayer.md)
