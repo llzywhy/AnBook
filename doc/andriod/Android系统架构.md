@@ -94,4 +94,4 @@ Android 随附一套用于电子邮件、短信、日历、互联网浏览和联
 Android 系统启动过程由上图从下往上的一个过程是由 Boot Loader 引导开机，然后依次进入 Kernel -> Native -> Framework -> App
 
 ## 参考资料
-无参考资料
+1. <https://developer.android.com/guide/platform?hl=zh-cn>

@@ -4,8 +4,8 @@
 <https://llzywhy.github.io/AnBook/>
 
 ## 目的
-
-建立 Android 音视频知识库
+1. 建立 Android 音视频知识库
+2. 探索一条清晰的系统的学习音视频的路径
 
 ## 定位
 
