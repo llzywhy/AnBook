@@ -37,3 +37,7 @@ libswresample: 是一个执行高度优化的音频重采样、重新矩阵化�
 ## FFmpeg 架构
 
 ## FFmpeg 应用
+
+## 参考资料
+1. <https://blog.csdn.net/leixiaohua1020/article/details/15811977>
+2. <https://ffmpeg.org/documentation.html>
