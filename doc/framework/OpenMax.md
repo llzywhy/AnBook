@@ -112,7 +112,7 @@ OpenMax_Deinit
 
 ## OpenMax 服务启动流程图
 
-![](../../assets/openMax_startup.png)
+![](../../assets/openmax_startup.png)
 
 media.codec 服务启动的时候，会创建 OpenMaxStore 和 OpenMax
 
