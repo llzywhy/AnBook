@@ -18,6 +18,7 @@
     * [MediaCodec](doc/framework/MediaCodec.md)
     * [V4L2](doc/framework/V4L2.md)
     * [ALSA](doc/framework/ALSA.md)
+    * [TinyALSA](doc/framework/TinyALSA.md)
 * 音视频编解码
     * Video Decoder
         * [H264](doc/codec/video/H264.md)
