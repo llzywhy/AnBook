@@ -1,5 +1,7 @@
 # MY
 _book/
+*.bkp
+*.dtmp
 
 # Logs
 logs
