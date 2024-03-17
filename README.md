@@ -95,6 +95,7 @@ npm install  # 安装全部依赖
 
 ```
 cd AnBook  # 进入到仓库根目录中
+nvm use 13.14.0
 npm run serve
 ```
 一切 OK 即可通过如下链接访问本地文档：http://localhost:4000/

@@ -5,6 +5,12 @@
     * [Android 概述](doc/andriod/android_overview.md)
     * [Android 系统架构](doc/andriod/android_system_architecture.md)
     * [Binder](doc/andriod/Binder.md)
+    * [Android Audio 框架](doc/andriod/Audio.md)
+    * [audioserver 启动流程](doc/andriod/audioserver.md)
+    * [AudioTrack](doc/andriod/AudioTrack.md)
+    * [AudioPolicy](doc/andriod/AudioPolicy.md)
+    * [AudioFlinger](doc/andriod/AudioFlinger.md)
+    * [AudioHal](doc/andriod/AudioHal.md)
 * Player
     * [Exoplayer](doc/player/ExoPlayer.md)
     * [Nuplayer](doc/player/NuPlayer.md)
