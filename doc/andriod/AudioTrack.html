@@ -993,10 +993,405 @@
     
           <section class="normal markdown-section">
              <h1 id="audiotrack">AudioTrack</h1>
-<p>&#x76EE;&#x6807;&#xFF1A;
-1&#x3001;&#x8BF4;&#x6E05;&#x695A; java &#x5C42;&#x662F;&#x600E;&#x4E48;&#x4F7F;&#x7528; Audio Track&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x6D41;&#x7A0B;&#x548C;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x7684;&#x4F7F;&#x7528;
-2&#x3001;&#x8BF4;&#x6E05;&#x695A; C++ &#x5C42;&#x662F;&#x600E;&#x4E48;&#x4F7F;&#x7528; Audio Track&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x6D41;&#x7A0B;&#x548C;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x7684;&#x4F7F;&#x7528;</p>
- 
+<h2 id="&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x76EE;&#x6807;">&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x76EE;&#x6807;</h2>
+<ul>
+<li>&#x4E86;&#x89E3; java &#x5C42; Audio Track &#x7684;&#x4F7F;&#x7528;&#x6D41;&#x7A0B;&#x548C;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x7684;&#x4F5C;&#x7528;</li>
+<li>&#x4E86;&#x89E3; C++ &#x5C42; Audio Track &#x7684;&#x4F7F;&#x7528;&#x6D41;&#x7A0B;&#x548C;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x7684;&#x4F5C;&#x7528;</li>
+</ul>
+<h2 id="java-&#x5C42;-audio-track-&#x7684;&#x4F7F;&#x7528;">java &#x5C42; Audio Track &#x7684;&#x4F7F;&#x7528;</h2>
+<h3 id="audio-track-&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;">Audio Track &#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;</h3>
+<p><a href="https://developer.android.com/reference/android/media/AudioTrack" target="_blank">https://developer.android.com/reference/android/media/AudioTrack</a></p>
+<h3 id="audio-track-&#x6E90;&#x7801;&#xFF1A;">Audio Track &#x6E90;&#x7801;&#xFF1A;</h3>
+<p><a href="https://cs.android.com/android/platform/superproject/+/android-12.1.0_r8:frameworks/base/media/java/android/media/AudioTrack.java;l=639" target="_blank">https://cs.android.com/android/platform/superproject/+/android-12.1.0_r8:frameworks/base/media/java/android/media/AudioTrack.java;l=639</a></p>
+<h3 id="audio-track-java-demo-&#x4EE3;&#x7801;">Audio Track java demo &#x4EE3;&#x7801;</h3>
+<pre><code class="lang-java">frameworks/base/media/tests/MediaFrameworkTest/src/com/android/mediaframeworktest/functional/audio/MediaAudioTrackTest.<span class="hljs-function">java
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testSetPlaybackRate</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-comment">// constants for test</span>
+    <span class="hljs-keyword">final</span> String TEST_NAME = <span class="hljs-string">&quot;testSetPlaybackRate&quot;</span>;
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> TEST_SR = <span class="hljs-number">22050</span>;
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> TEST_CONF = AudioFormat.CHANNEL_OUT_STEREO;
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> TEST_FORMAT = AudioFormat.ENCODING_PCM_16BIT;
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> TEST_MODE = AudioTrack.MODE_STREAM;
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> TEST_STREAM_TYPE = AudioManager.STREAM_MUSIC;
+
+    <span class="hljs-comment">//-------- initialization --------------</span>
+    <span class="hljs-keyword">int</span> minBuffSize = AudioTrack.getMinBufferSize(TEST_SR, TEST_CONF, TEST_FORMAT);
+    AudioTrack track = <span class="hljs-keyword">new</span> AudioTrack(TEST_STREAM_TYPE, TEST_SR, TEST_CONF, TEST_FORMAT,
+            minBuffSize, TEST_MODE);
+    <span class="hljs-keyword">byte</span> data[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[minBuffSize/<span class="hljs-number">2</span>];
+    <span class="hljs-comment">//--------    test        --------------</span>
+    track.write(data, <span class="hljs-number">0</span>, data.length);
+    track.write(data, <span class="hljs-number">0</span>, data.length);
+    assumeTrue(TEST_NAME, track.getState() == AudioTrack.STATE_INITIALIZED);
+    track.play();
+    assertTrue(TEST_NAME, track.setPlaybackRate((<span class="hljs-keyword">int</span>)(TEST_SR/<span class="hljs-number">2</span>)) == AudioTrack.SUCCESS);
+    <span class="hljs-comment">//-------- tear down      --------------</span>
+    track.release();
+}
+</code></pre>
+<h3 id="audio-track-&#x521B;&#x5EFA;&#x53C2;&#x6570;&#x89E3;&#x6790;">Audio Track &#x521B;&#x5EFA;&#x53C2;&#x6570;&#x89E3;&#x6790;</h3>
+<p><strong>Audio Track &#x6570;&#x636E;&#x4F20;&#x8F93;&#x6A21;&#x5F0F;</strong></p>
+<ul>
+<li>AudioTrack.MODE_STREAM</li>
+</ul>
+<p>&#x5728;&#x6D41;&#x6A21;&#x5F0F;&#xFF08;MODE_STREAM&#xFF09;&#x4E0B;&#xFF0C;&#x97F3;&#x9891;&#x6570;&#x636E;&#x662F;&#x52A8;&#x6001;&#x5199;&#x5165;&#x5230;AudioTrack&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4F60;&#x53EF;&#x4EE5;&#x4E00;&#x8FB9;&#x64AD;&#x653E;&#x4E00;&#x8FB9;&#x4E0D;&#x65AD;&#x5730;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x9002;&#x7528;&#x4E8E;&#x6301;&#x7EED;&#x4E0D;&#x65AD;&#x7684;&#x97F3;&#x9891;&#x6D41;&#xFF0C;&#x6BD4;&#x5982;&#x97F3;&#x4E50;&#x64AD;&#x653E;&#x6216;&#x8005;&#x7F51;&#x7EDC;&#x97F3;&#x9891;&#x6D41;&#x3002;&#x6D41;&#x6A21;&#x5F0F;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x64AD;&#x653E;&#x8F83;&#x957F;&#x7684;&#x97F3;&#x9891;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x5B9E;&#x65F6;&#x7684;&#x97F3;&#x9891;&#x6D41;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x9700;&#x8981;&#x4E00;&#x6B21;&#x6027;&#x5C06;&#x6240;&#x6709;&#x7684;&#x97F3;&#x9891;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x6D41;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4E0D;&#x65AD;&#x5730;&#x8C03;&#x7528;write()&#x65B9;&#x6CD5;&#x6765;&#x63D0;&#x4F9B;&#x65B0;&#x7684;&#x97F3;&#x9891;&#x6570;&#x636E;&#x3002;AudioTrack&#x4F1A;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x5C06;&#x5B83;&#x4EEC;&#x53D1;&#x9001;&#x5230;&#x97F3;&#x9891;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x97F3;&#x9891;&#x786C;&#x4EF6;&#x8FDB;&#x884C;&#x64AD;&#x653E;&#x3002;</p>
+<ul>
+<li>AudioTrack.MODE_STATIC</li>
+</ul>
+<p>&#x9759;&#x6001;&#x6A21;&#x5F0F;&#xFF08;MODE_STATIC&#xFF09;&#x5141;&#x8BB8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E00;&#x6B21;&#x6027;&#x5C06;&#x6240;&#x6709;&#x97F3;&#x9891;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5230;AudioTrack&#x4E2D;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x9002;&#x5408;&#x64AD;&#x653E;&#x65F6;&#x95F4;&#x8F83;&#x77ED;&#x7684;&#x97F3;&#x9891;&#x7247;&#x6BB5;&#xFF0C;&#x5982;&#x6E38;&#x620F;&#x7684;&#x97F3;&#x6548;&#x3002;&#x7531;&#x4E8E;&#x6570;&#x636E;&#x662F;&#x9884;&#x5148;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x64AD;&#x653E;&#xFF0C;&#x800C;&#x4E14;&#x5728;&#x64AD;&#x653E;&#x65F6;&#x4E0D;&#x4F1A;&#x6709;&#x5EF6;&#x8FDF;&#x3002;</p>
+<p>&#x5728;&#x9759;&#x6001;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6574;&#x4E2A;&#x97F3;&#x9891;&#x6837;&#x672C;&#x662F;&#x5728;&#x521B;&#x5EFA;AudioTrack&#x5BF9;&#x8C61;&#x65F6;&#x4E00;&#x6B21;&#x6027;&#x5199;&#x5165;&#x7684;&#x3002;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x64AD;&#x653E;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x800C;&#x65E0;&#x9700;&#x518D;&#x6B21;&#x5199;&#x5165;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x5BF9;&#x4E8E;&#x8D44;&#x6E90;&#x6709;&#x9650;&#x7684;&#x73AF;&#x5883;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x51CF;&#x5C11;&#x4E86;CPU&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x53D7;&#x5230;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x7684;&#x9650;&#x5236;&#x3002;</p>
+<p><strong>stream type</strong></p>
+<p><strong>AudioAttribute</strong></p>
+<h3 id="&#x57FA;&#x672C;&#x4F7F;&#x7528;&#x6D41;&#x7A0B;">&#x57FA;&#x672C;&#x4F7F;&#x7528;&#x6D41;&#x7A0B;</h3>
+<ol>
+<li>new Audio Track</li>
+<li>&#x5199;&#x6570;&#x636E;</li>
+<li>&#x64AD;&#x653E;&#x6570;&#x636E;</li>
+<li>release Audio Track</li>
+</ol>
+<h2 id="c-&#x5C42;-audio-track-&#x7684;&#x4F7F;&#x7528;">C++ &#x5C42; Audio Track &#x7684;&#x4F7F;&#x7528;</h2>
+<h3 id="audio-track-c-demo-&#x4EE3;&#x7801;">Audio Track C++ demo &#x4EE3;&#x7801;:</h3>
+<pre><code>bp &#x6587;&#x4EF6;&#x4FEE;&#x6539;&#xFF1A;
+
+cc_test {
+    name: &quot;atdemo&quot;,
+    gtest: false,
+
+    srcs: [&quot;audio_track_demo.cpp&quot;],
+
+    shared_libs: [
+        &quot;liblog&quot;,
+        &quot;libcutils&quot;,
+        &quot;libutils&quot;,
+        &quot;libbinder&quot;,
+        &quot;libhardware_legacy&quot;,
+        &quot;libmedia&quot;,
+        &quot;libaudioclient&quot;,
+    ],
+
+    header_libs: [
+        &quot;libmediametrics_headers&quot;,
+    ],
+
+    cflags: [
+        &quot;-Wall&quot;,
+        &quot;-Werror&quot;,
+        &quot;-Wno-error=deprecated-declarations&quot;,
+        &quot;-Wunused&quot;,
+        &quot;-Wunreachable-code&quot;,
+    ],
+}
+
+&#x4EA7;&#x7269;&#x8DEF;&#x5F84;&#xFF1A;Android12\out\target\product\tcl9618\data\nativetest
+
+demo&#x4EE3;&#x7801;&#xFF1A;
+
+#define LOG_TAG &quot;atdemo&quot;
+
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;cutils/properties.h&gt;
+#include &lt;media/AudioSystem.h&gt;
+#include &lt;media/AudioTrack.h&gt;
+#include &lt;math.h&gt;
+
+#include &lt;binder/MemoryDealer.h&gt;
+#include &lt;binder/MemoryHeapBase.h&gt;
+#include &lt;binder/MemoryBase.h&gt;
+#include &lt;binder/ProcessState.h&gt;
+
+#include &lt;utils/Log.h&gt;
+
+#include &lt;fcntl.h&gt;
+
+namespace android {
+
+class AudioTrackTest{
+    public:
+        AudioTrackTest(void);
+        ~AudioTrackTest() {};
+
+        void Execute(void);
+        int Test01();
+        int Test02();
+
+        void Generate(short *buffer, long bufferSz, long amplitude, unsigned long &amp;phi, long dPhi);
+        void InitSine();
+        short ComputeSine(long amplitude, long phi);
+
+        #define SIN_SZ    1024
+        short sin1024[SIN_SZ];           // sine table 2*pi = 1024
+};
+
+/************************************************************
+*
+*    Constructor
+*
+************************************************************/
+AudioTrackTest::AudioTrackTest(void) {
+
+    InitSine();         // init sine table
+
+}
+
+
+/************************************************************
+*
+*
+************************************************************/
+void AudioTrackTest::Execute(void) {
+    if (Test01() == 0) {
+        printf(&quot;01 passed\n&quot;);
+    } else {
+        printf(&quot;01 failed\n&quot;);
+    }
+
+    if (Test02() == 0) {
+        printf(&quot;02 passed\n&quot;);
+    } else {
+        printf(&quot;02 failed\n&quot;);
+    }
+}
+
+/************************************************************
+*
+*    Shared memory test
+*
+************************************************************/
+#define BUF_SZ 441000
+
+int AudioTrackTest::Test01() {
+
+    printf(&quot;Test01\n&quot;);
+    sp&lt;MemoryDealer&gt; heap;
+    sp&lt;IMemory&gt; iMem;
+    uint8_t* data;
+
+    short smpBuf[BUF_SZ];
+    long rate = 44100;
+    unsigned long phi;
+    unsigned long dPhi;
+    long amplitude;
+    long freq = 1237;
+    float f0;
+
+    f0 = pow(2., 32.) * freq / (float)rate;
+    dPhi = (unsigned long)f0;
+    amplitude = 1000;
+    phi = 0;
+    Generate(smpBuf, BUF_SZ, amplitude, phi, dPhi);  // fill buffer
+
+    printf(&quot;before loop\n&quot;);
+    for (int i = 0; i &lt; 1; i++) {
+
+        printf(&quot;new MemoryDealer\n&quot;);
+        heap = new MemoryDealer(1024*1024*4, &quot;AudioTrack Heap Base&quot;);
+
+        iMem = heap-&gt;allocate(BUF_SZ*sizeof(short));
+
+        data = static_cast&lt;uint8_t*&gt;(iMem-&gt;unsecurePointer());
+        memcpy(data, smpBuf, BUF_SZ*sizeof(short));
+
+        printf(&quot;new AudioTrack\n&quot;);
+        sp&lt;AudioTrack&gt; track = new AudioTrack(AUDIO_STREAM_MUSIC,// stream type
+               rate,
+               AUDIO_FORMAT_PCM_16_BIT,// word length, PCM
+               AUDIO_CHANNEL_OUT_MONO,
+               iMem);
+
+        printf(&quot;track initCheck\n&quot;);
+        status_t status = track-&gt;initCheck();
+        if(status != NO_ERROR) {
+            track.clear();
+            printf(&quot;Failed for initCheck()\n&quot;);
+            return -1;
+        }
+
+        printf(&quot;set volume 1.0\n&quot;);
+        track-&gt;setVolume(1.0f);
+
+        // start play
+        printf(&quot;start\n&quot;);
+        track-&gt;start();
+
+        printf(&quot;sleep 2s\n&quot;);
+        usleep(2000000);
+
+        printf(&quot;stop\n&quot;);
+        track-&gt;stop();
+        iMem.clear();
+        heap.clear();
+        usleep(20000);
+    }
+
+    return 0;
+
+}
+
+
+//#define FRAME_COUNT 1024
+//#define pcm_file &quot;/data/audio.pcm&quot;
+
+int AudioTrackTest::Test02() {
+    // long rate = 44100;
+    // int fd = 0;
+    // int length = 0;
+    size_t MinFrameCount = 0;
+    // unsigned char mBuffer[FRAME_COUNT];
+
+    // fd = open(pcm_file, O_RDWR);
+    // if (fd &lt; 0) {
+    //     printf(&quot;%s open failed\n&quot;, pcm_file);
+    //     return -1;
+    // }
+
+    short smpBuf[BUF_SZ];
+    long rate = 44100;
+    unsigned long phi;
+    unsigned long dPhi;
+    long amplitude;
+    long freq = 1237;
+    float f0;
+
+    f0 = pow(2., 32.) * freq / (float)rate;
+    dPhi = (unsigned long)f0;
+    amplitude = 1000;
+    phi = 0;
+    Generate(smpBuf, BUF_SZ, amplitude, phi, dPhi);  // fill buffer
+
+    AudioTrack::getMinFrameCount(&amp;MinFrameCount, AUDIO_STREAM_MUSIC, rate);
+    printf(&quot;MinFrameCount = %zu\n&quot;, MinFrameCount);
+
+    sp&lt;AudioTrack&gt; track = new AudioTrack(AUDIO_STREAM_MUSIC, // stream type
+                                          rate,
+                                          AUDIO_FORMAT_PCM_16_BIT, // word length, PCM
+                                          AUDIO_CHANNEL_OUT_STEREO, 0);
+
+    status_t status = track-&gt;initCheck();
+    if (status != NO_ERROR) {
+        track.clear();
+        printf(&quot;Failed for initCheck()&quot;);
+        return -1;
+    }
+
+    printf(&quot;set volume 1.0\n&quot;);
+    track-&gt;setVolume(1.0f);
+
+    // start play
+    printf(&quot;start&quot;);
+    track-&gt;start();
+
+    int us;
+    for (int i = 0; i &lt; 2; i++) {
+        Generate(smpBuf, BUF_SZ, amplitude, phi, dPhi);  // fill buffer
+        // length = read(fd, mBuffer, FRAME_COUNT);
+        track-&gt;write(smpBuf, BUF_SZ, true);
+        us = BUF_SZ * 1000 / (rate * 2 * 16);
+        usleep(us);
+        printf(&quot;write data:%d\n&quot;, i);
+    }
+
+    usleep(20000);
+
+    printf(&quot;stop&quot;);
+    track-&gt;stop();
+
+    usleep(20000);
+
+    return 0;
+}
+
+/************************************************************
+*
+*    Generate a mono buffer
+*    Error is less than 3lsb
+*
+************************************************************/
+void AudioTrackTest::Generate(short *buffer, long bufferSz, long amplitude, unsigned long &amp;phi, long dPhi)
+{
+    // fill buffer
+    for(int i0=0; i0&lt;bufferSz; i0++) {
+        buffer[i0] = ComputeSine( amplitude, phi);
+        phi += dPhi;
+    }
+}
+
+/************************************************************
+*
+*    Generate a sine
+*    Error is less than 3lsb
+*
+************************************************************/
+short AudioTrackTest::ComputeSine(long amplitude, long phi)
+{
+    long pi13 = 25736;   // 2^13*pi
+    long sample;
+    long l0, l1;
+
+    sample = (amplitude*sin1024[(phi&gt;&gt;22) &amp; 0x3ff]) &gt;&gt; 15;
+    // correct with interpolation
+    l0 = (phi&gt;&gt;12) &amp; 0x3ff;         // 2^20 * x / (2*pi)
+    l1 = (amplitude*sin1024[((phi&gt;&gt;22) + 256) &amp; 0x3ff]) &gt;&gt; 15;    // 2^15*cosine
+    l0 = (l0 * l1) &gt;&gt; 10;
+    l0 = (l0 * pi13) &gt;&gt; 22;
+    sample = sample + l0;
+
+    return (short)sample;
+}
+
+
+/************************************************************
+*
+*    init sine table
+*
+************************************************************/
+void AudioTrackTest::InitSine(void) {
+    printf(&quot;InitSine\n&quot;);
+    double phi = 0;
+    double dPhi = 2 * M_PI / SIN_SZ;
+    for(int i0 = 0; i0&lt;SIN_SZ; i0++) {
+        long d0;
+
+        d0 = 32768. * sin(phi);
+        phi += dPhi;
+        if(d0 &gt;= 32767) d0 = 32767;
+        if(d0 &lt;= -32768) d0 = -32768;
+        sin1024[i0] = (short)d0;
+    }
+}
+
+/************************************************************
+*
+*    main in name space
+*
+************************************************************/
+int main() {
+    printf(&quot;android main in\n&quot;);
+    ProcessState::self()-&gt;startThreadPool();
+    AudioTrackTest *test;
+
+    test = new AudioTrackTest();
+    printf(&quot;test-&gt;Execute()\n&quot;);
+    test-&gt;Execute();
+    delete test;
+
+    return 0;
+}
+
+}
+
+/************************************************************
+*
+*    global main
+*
+************************************************************/
+int main() {
+    printf(&quot;main in\n&quot;);
+    return android::main();
+}
+</code></pre> 
           </section>
           
     </div>
@@ -1094,7 +1489,7 @@
 
     var gitbook = gitbook || [];
     gitbook.push(function () {
-      gitbook.page.hasChanged({"page":{"title":"AudioTrack","level":"1.2.6","depth":2,"next":{"title":"AudioPolicy","level":"1.2.7","depth":2,"path":"doc/andriod/AudioPolicy.md","ref":"doc/andriod/AudioPolicy.md","articles":[]},"previous":{"title":"audioserver 启动流程","level":"1.2.5","depth":2,"path":"doc/andriod/audioserver.md","ref":"doc/andriod/audioserver.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","-sharing","search-pro","code","expandable-chapters","back-to-top-button","flexible-alerts","theme-lou","lightbox"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"theme-lou":{"hide-elements":[".summary .gitbook-link",".summary .divider"],"color":"#434242","book-anchor-title":"目录","copyright":{"author":"llzywhy"},"forbidCopy":false,"logo":"assets/logo.png","book-summary-title":"文章列表","search-placeholder":"","copyrightLogo":"assets/copyright.png","favicon":"assets/favicon.ico","appleTouchIconPrecomposed152":"assets/apple.png"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"flexible-alerts":{"style":"flat","note":{"label":"Note","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tip","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warning","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Attention","icon":"fa fa-ban","className":"danger"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"llzywhy","lang":"zh-cn","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{"themeLou":{"nav":[],"footer":{"copyright":true}}},"title":"","gitbook":"*","description":"Android Book"},"file":{"path":"doc/andriod/AudioTrack.md","mtime":"2024-07-12T04:12:05.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-07-12T04:12:43.665Z"},"basePath":"../..","book":{"language":""}});
+      gitbook.page.hasChanged({"page":{"title":"AudioTrack","level":"1.2.6","depth":2,"next":{"title":"AudioPolicy","level":"1.2.7","depth":2,"path":"doc/andriod/AudioPolicy.md","ref":"doc/andriod/AudioPolicy.md","articles":[]},"previous":{"title":"audioserver 启动流程","level":"1.2.5","depth":2,"path":"doc/andriod/audioserver.md","ref":"doc/andriod/audioserver.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","-sharing","search-pro","code","expandable-chapters","back-to-top-button","flexible-alerts","theme-lou","lightbox"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"theme-lou":{"hide-elements":[".summary .gitbook-link",".summary .divider"],"color":"#434242","book-anchor-title":"目录","copyright":{"author":"llzywhy"},"forbidCopy":false,"logo":"assets/logo.png","book-summary-title":"文章列表","search-placeholder":"","copyrightLogo":"assets/copyright.png","favicon":"assets/favicon.ico","appleTouchIconPrecomposed152":"assets/apple.png"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"flexible-alerts":{"style":"flat","note":{"label":"Note","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tip","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warning","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Attention","icon":"fa fa-ban","className":"danger"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"llzywhy","lang":"zh-cn","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{"themeLou":{"nav":[],"footer":{"copyright":true}}},"title":"","gitbook":"*","description":"Android Book"},"file":{"path":"doc/andriod/AudioTrack.md","mtime":"2024-07-13T03:27:57.358Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-07-13T03:28:34.823Z"},"basePath":"../..","book":{"language":""}});
     });
   </script>
 </div>
